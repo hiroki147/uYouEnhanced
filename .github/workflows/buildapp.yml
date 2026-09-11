@@ -49,9 +49,10 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout Main
+      - name: Checkout main-old2
         uses: actions/checkout@v3.5.3
         with:
+          ref: main-old2
           path: main
           submodules: recursive
 
