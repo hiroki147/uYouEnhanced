@@ -131,6 +131,12 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
           YOUTUBE_URL: ${{ inputs.decrypted_youtube_url }}
 
+      - name: Fix Alderis for modern Swift
+        run: |
+          cd ${{ github.workspace }}/main/Tweaks/Alderis
+          sed -i '' 's/var tab: ColorPickerTab/var colorPickerTab: ColorPickerTab/' Alderis/ColorPickerInnerViewController.swift
+          sed -i '' 's/^[[:space:]]*tab = configuration.initialTab/colorPickerTab = configuration.initialTab/' Alderis/ColorPickerInnerViewController.swift
+
       - name: Fix compiling & Build Package
         id: build_package
         run: |
